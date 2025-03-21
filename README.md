@@ -1,190 +1,170 @@
-# Password Validation Form Challenge
+# HENNGE Frontend Challenge
 
-This is a React-based implementation of the HENNGE frontend password validation challenge. The application provides a user registration form with client-side password validation and API integration.
+A "Create User" form with password validation and API integration.
 
-## Prerequisites
+## Quick Start
 
-- Node.js (v18 or higher recommended)
-- pnpm (v8 or higher)
-- A modern web browser (Chrome, Firefox, Edge, etc.)
-
-## Setup Instructions
-
-1. Install pnpm if you haven't already:
+1. Install dependencies:
 
 ```bash
-npm install -g pnpm
-```
-
-2. Navigate to the project directory:
-
-```bash
-cd frontend_password_validation_v1_challenge/challenge/react
-```
-
-3. Clean install dependencies:
-
-```bash
-# Remove existing modules (if any)
-rm -rf node_modules .vite
-# Install dependencies
 pnpm install
 ```
 
-4. Start the development server:
+2. Start the application:
 
 ```bash
-# Start with network access
-pnpm dev --host
+pnpm dev
 ```
 
-5. Open your browser and navigate to:
+3. Access the application:
 
 ```
-http://localhost:5173
+http://localhost:5173?token=YOUR_TOKEN
 ```
 
-### Troubleshooting
+## Password Requirements
 
-If you encounter "Connection Refused" errors:
+- Length: 10-24 characters
+- Must contain at least one number
+- Must contain at least one uppercase letter
+- Must contain at least one lowercase letter
+- Cannot contain spaces
 
-1. Make sure no other application is using port 5173
-2. Try using the network URL provided in the terminal output
-3. Check if your firewall is blocking the connection
-4. Try restarting the development server
+## Testing Steps
 
-## Testing the Application
+1. Username:
 
-### Password Validation Rules
+   - Enter a valid username
 
-The password must meet all these criteria:
+2. Password:
 
-- At least 10 characters long
-- At most 24 characters long
-- No spaces allowed
-- At least one number
-- At least one uppercase letter
-- At least one lowercase letter
+   - Test with invalid passwords to see validation messages
+   - Use a valid password (example: "Password123456")
 
-### Test Cases
-
-1. **Username Validation**
-
-```
-Empty username: Submit button should be disabled
-Spaces in username: Allowed (e.g., "John Doe")
-Username with only spaces: Not allowed
-```
-
-2. **Password Validation Tests**
-
-```
-Too Short:
-- Password: abc123
-- Expected: "Password must be at least 10 characters long"
-
-With Spaces:
-- Password: Hello World 123
-- Expected: "Password cannot contain spaces"
-
-Missing Number:
-- Password: HelloWorldTest
-- Expected: "Password must contain at least one number"
-
-Missing Uppercase:
-- Password: hello123world
-- Expected: "Password must contain at least one uppercase letter"
-
-Missing Lowercase:
-- Password: HELLO123WORLD
-- Expected: "Password must contain at least one lowercase letter"
-
-Perfect Password:
-- Password: HelloWorld123
-- Expected: No validation errors
-```
-
-3. **API Testing**
-   To test API integration:
-1. Get your authentication token from the HENNGE challenge details page
-1. Add it to the URL: `http://localhost:5173?token=your-token-here`
-1. Submit the form with valid credentials
-
-### Error Messages
-
-The application shows different error messages based on the response:
-
-- Authentication Error: "Not authenticated to access this resource"
-- Common Password Error: "Sorry, the entered password is not allowed, please try a different one"
-- Generic Error: "Something went wrong, please try again"
-
-## Features
-
-1. **Real-time Validation**
-
-- Instant feedback as user types
-- Clear error messages
-- Visual indicators for invalid fields
-- Red border on invalid fields
-- Disabled submit button when form is invalid
-
-2. **Accessibility**
-
-- Proper label associations with htmlFor
-- ARIA invalid states for validation
-- Keyboard navigation support
-- Clear error message structure
-
-3. **Error Handling**
-
-- Client-side validation
-- API error handling
-- Clear error messages
-- Separate styling for API errors vs validation errors
+3. Submit:
+   - Click Create User button
+   - Check for success/error messages
 
 ## Project Structure
 
 ```
-react/
-  ├── src/
-  │   ├── app.tsx                # Main application component
-  │   ├── create-user-form.tsx   # Form component with validation
-  │   ├── main.tsx              # Application entry point
-  │   └── style.css             # Global styles
-  ├── package.json              # Project dependencies
-  ├── tsconfig.json            # TypeScript configuration
-  └── vite.config.ts           # Vite configuration
+src/
+├── app.tsx              # Main application component
+├── create-user-form.tsx # Form component with validation
+├── main.tsx            # Entry point
+└── style.css           # Styles
 ```
 
-## Development Notes
+## Features
 
-- Uses React 19.0.0 with TypeScript
-- All styling is done with inline styles as per requirements
-- No external dependencies added as per requirements
-- Form validation happens in real-time
-- API calls are made only when all validation passes
-- Uses Vite 6.0.6 for development server
+- Username validation
+- Password validation with the following rules:
+  - Must be 10-24 characters long
+  - Must contain at least one number
+  - Must contain at least one uppercase letter
+  - Must contain at least one lowercase letter
+  - Cannot contain spaces
+- Real-time validation feedback
+- API integration with error handling
+- Responsive design
+- Accessibility features
 
-## Submission Requirements
+## Demo
 
-For challenge submission:
+### Screenshots
 
-1. Only submit the `create-user-form.tsx` file
-2. Create a secret gist on GitHub with this file
-3. Follow the submission instructions in the challenge details
+![Form Initial State](docs/assets/form-initial.png)
+![Password Validation](docs/assets/password-validation.png)
+![Success State](docs/assets/success.png)
 
-### Creating the Submission
+### Video Demo
 
-1. Create a secret gist:
+You can watch a demo of the application here: [Demo Video](docs/assets/demo.mp4)
 
-   - Go to https://gist.github.com/
-   - Create a new gist
-   - Set it as secret
-   - Name the file `create-user-form.tsx`
-   - Paste your component code
-   - Create the gist
+## Setup
 
-2. Submit your solution:
-   - Create the JSON payload with your details
-   - Send it to the HENNGE API as specified
-   - Use Basic Authentication with your email and "HENNGECHALLENGE"
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Sanyaba964/HENNGE-Frontend-Challenge.git
+cd HENNGE-Frontend-Challenge
+```
+
+2. Install dependencies:
+
+```bash
+pnpm install
+```
+
+3. Start the development server:
+
+```bash
+pnpm dev
+```
+
+4. Access the application:
+
+```
+http://localhost:5173?token=YOUR_CHALLENGE_TOKEN
+```
+
+Replace `YOUR_CHALLENGE_TOKEN` with the authentication token provided in your challenge details.
+
+## Testing
+
+### Password Validation Test Cases
+
+1. Length Requirements:
+
+   - Less than 10 characters
+   - More than 24 characters
+   - Between 10-24 characters
+
+2. Character Requirements:
+
+   - Without numbers
+   - Without uppercase letters
+   - Without lowercase letters
+   - With spaces
+   - Meeting all requirements
+
+3. API Integration:
+   - Missing token
+   - Invalid token
+   - Valid submission
+
+## Adding Demo Materials
+
+To add your own demo materials:
+
+1. Create screenshots of your application:
+
+   - Take screenshots of different states (initial, validation, success)
+   - Save them in the `docs/assets` directory
+   - Update the image paths in this README
+
+2. Create a video demo:
+   - Record a short demo of the application
+   - Save it as MP4 in the `docs/assets` directory
+   - Update the video link in this README
+
+## Submission Information
+
+1. Ensure all code is committed
+2. Create a GitHub gist with your solution
+3. Submit the gist URL to HENNGE
+
+### Important Notes
+
+- Update the `submit.cjs` file with your email address and the URL of your secret gist before running the submission script.
+- Ensure that the token is provided as a URL parameter when accessing the application.
+
+1. Ensure all code is committed
+2. Create a GitHub gist with your solution
+3. Submit the gist URL to HENNGE
+
+## Notes
+
+- The API endpoint requires authentication via token
+- Token should be provided as a URL parameter
+- All validation is performed client-side before API submission
